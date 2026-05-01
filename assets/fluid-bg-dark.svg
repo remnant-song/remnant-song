@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <rect width="100%" height="100%" fill="#111827"/>
+  <g stroke-width="0.8" stroke-linecap="round">
+    <!-- 3D旋转立方体线框 -->
+    <g transform="translate(300,200)">
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="20s" repeatCount="indefinite"/>
+      <path d="M-50,-50L50,-50L50,50L-50,50Z M-50,-50L-50,50 M50,-50L50,50 M-50,-50L-50,-50,50 M50,-50L50,-50,50" fill="none" stroke="url(#color1)"/>
+    </g>
+    <!-- 3D旋转四面体线框 -->
+    <g transform="translate(900,200)">
+      <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="18s" repeatCount="indefinite"/>
+      <path d="M0,-50L-40,30L40,30Z M0,-50L0,30" fill="none" stroke="url(#color2)"/>
+    </g>
+    <!-- 流体流动渐变线条 -->
+    <path d="M100,200Q300,100 500,200T900,200" fill="none" stroke="url(#fluid)" stroke-width="1.2">
+      <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M100,200Q300,100 500,200T900,200;M100,200Q300,300 500,200T900,200;M100,200Q300,100 500,200T900,200"/>
+    </path>
+    <!-- 拖影轨迹 -->
+    <path d="M100,200Q300,100 500,200T900,200" fill="none" stroke="url(#fluid)" stroke-width="1.2" opacity="0.3">
+      <animate attributeName="d" dur="12s" begin="1s" repeatCount="indefinite" values="M100,200Q300,100 500,200T900,200;M100,200Q300,300 500,200T900,200;M100,200Q300,100 500,200T900,200"/>
+    </path>
+  </g>
+  <!-- 彩色渐变（匹配你的代码色相动画） -->
+  <defs>
+    <linearGradient id="color1">
+      <stop offset="0%" stop-color="#ff6b6b"><animate attributeName="stop-color" values="#ff6b6b;#4dabf7;#9775fa;#ff6b6b" dur="8s" repeatCount="indefinite"/></stop>
+      <stop offset="100%" stop-color="#4dabf7"><animate attributeName="stop-color" values="#4dabf7;#9775fa;#ff6b6b;#4dabf7" dur="8s" repeatCount="indefinite"/></stop>
+    </linearGradient>
+    <linearGradient id="color2">
+      <stop offset="0%" stop-color="#9775fa"><animate attributeName="stop-color" values="#9775fa;#ff6b6b;#4dabf7;#9775fa" dur="10s" repeatCount="indefinite"/></stop>
+      <stop offset="100%" stop-color="#ff6b6b"><animate attributeName="stop-color" values="#ff6b6b;#4dabf7;#9775fa;#ff6b6b" dur="10s" repeatCount="indefinite"/></stop>
+    </linearGradient>
+    <linearGradient id="fluid">
+      <stop offset="0%" stop-color="#4dabf7"><animate attributeName="stop-color" values="#4dabf7;#9775fa;#ff6b6b;#4dabf7" dur="6s" repeatCount="indefinite"/></stop>
+      <stop offset="100%" stop-color="#9775fa"><animate attributeName="stop-color" values="#9775fa;#ff6b6b;#4dabf7;#9775fa" dur="6s" repeatCount="indefinite"/></stop>
+    </linearGradient>
+  </defs>
+</svg>
