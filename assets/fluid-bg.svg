@@ -43,12 +43,6 @@
     <filter id="radialBlur" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
     </filter>
-    <radialGradient id="blurMaskGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="1"/> <stop offset="40%" stop-color="#fff" stop-opacity="0.8"/> <stop offset="70%" stop-color="#fff" stop-opacity="0"/>
-    </radialGradient>
-    <mask id="maskForBlurLayer">
-      <rect width="100%" height="100%" fill="url(#blurMaskGradient)"/>
-    </mask>
     <radialGradient id="clearMaskGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
       <stop offset="0%" stop-color="#fff" stop-opacity="0"/> <stop offset="40%" stop-color="#fff" stop-opacity="0.2"/> <stop offset="70%" stop-color="#fff" stop-opacity="1"/>
     </radialGradient>
@@ -101,7 +95,7 @@
     </g>
   </defs>
 
-  <rect class="bg-rect" width="100%" height="100%" />
+  <!-- <rect class="bg-rect" width="100%" height="100%" /> -->
 
   <use href="#all-graphics" mask="url(#maskForClearLayer)" />
   <use href="#all-graphics" mask="url(#maskForBlurLayer)" filter="url(#radialBlur)" />
