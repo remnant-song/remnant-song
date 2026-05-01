@@ -1,105 +1,97 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
   <defs>
     <style>
-      /* 魔法阵旋转动画 */
-      .magic-circle-inner {
-        transform-origin: center;
-        animation: spin 15s linear infinite;
-        opacity: 0.15;
+      /* ====================================== */
+      /* 🔥 1. 魔法阵：原生 CSS 生长闭合动画 */
+      /* ====================================== */
+      .magic-draw {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        /* 将虚线长度设置得非常大，初始时将其偏移出视线 */
+        stroke-dasharray: 3000;
+        stroke-dashoffset: 3000;
+        /* 2.5秒内将偏移量归零，形成“绘制”效果，完成后保持原样 (forwards) */
+        animation: drawMagic 2.5s ease-in-out forwards;
       }
-      .magic-circle-outer {
-        transform-origin: center;
-        animation: spin-reverse 25s linear infinite;
-        opacity: 0.1;
+      @keyframes drawMagic {
+        0% { stroke-dashoffset: 3000; }
+        100% { stroke-dashoffset: 0; }
       }
-      @keyframes spin { 100% { transform: rotate(360deg); } }
-      @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+
+      /* ====================================== */
+      /* 🔥 2. 台词容器：等待魔法阵画完后淡入 */
+      /* ====================================== */
+      .text-container {
+        opacity: 0;
+        /* 延迟 1 秒后，花 0.8 秒淡入，并保持显示 */
+        animation: fadeIn 0.8s 1s forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; }
+      }
 
       /* 字体与基础排版 */
       .text-jp {
         font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-        font-size: 26px;
+        font-size: 22px; /* 缩小了字体，解决溢出问题 */
         font-weight: 900;
         fill: #fff;
-        /* 核心：故障动画 */
-        animation: glitch-anim 5s infinite;
+        /* 淡入完成后（2秒后）开始故障循环 */
+        animation: glitch-anim 5s 2s infinite;
       }
       .text-cn {
         font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
         font-size: 16px;
         font-weight: bold;
         fill: #a5b4fc;
-        opacity: 0.9;
-        animation: pulse 3s infinite alternate;
+        animation: pulse 3s 3.3s infinite alternate;
       }
       .text-en {
         font-family: "Courier New", monospace;
         font-size: 12px;
         fill: #67e8f9;
-        opacity: 0.7;
         letter-spacing: 3px;
       }
 
       /* 赛博故障 (Glitch) 撕裂特效 */
       @keyframes glitch-anim {
-        0%, 9%, 11%, 100% { 
-          text-shadow: 0 0 10px #d946ef, 0 0 20px #d946ef; 
-          transform: translate(0); 
-        }
-        9.2% { 
-          text-shadow: 3px 0 0 #0ff, -3px 0 0 #f0f; 
-          transform: translate(-3px, 1px) skewX(-10deg); 
-        }
-        9.4% { 
-          text-shadow: -4px 0 0 #0ff, 4px 0 0 #f0f; 
-          transform: translate(3px, -2px) skewX(10deg); 
-        }
-        9.6% { 
-          text-shadow: 2px 0 0 #0ff, -2px 0 0 #f0f; 
-          transform: translate(0px, 2px); 
-        }
-        9.8% { 
-          text-shadow: -2px 0 0 #0ff, 2px 0 0 #f0f; 
-          transform: translate(-1px, -1px); 
-        }
+        0%, 9%, 11%, 100% { text-shadow: 0 0 10px #d946ef, 0 0 20px #d946ef; transform: translate(0); }
+        9.2% { text-shadow: 3px 0 0 #0ff, -3px 0 0 #f0f; transform: translate(-3px, 1px) skewX(-10deg); }
+        9.4% { text-shadow: -4px 0 0 #0ff, 4px 0 0 #f0f; transform: translate(3px, -2px) skewX(10deg); }
+        9.6% { text-shadow: 2px 0 0 #0ff, -2px 0 0 #f0f; transform: translate(0px, 2px); }
+        9.8% { text-shadow: -2px 0 0 #0ff, 2px 0 0 #f0f; transform: translate(-1px, -1px); }
       }
 
       /* 呼吸灯发光特效 */
       @keyframes pulse {
-        0% { opacity: 0.5; text-shadow: 0 0 5px #6366f1; }
-        100% { opacity: 1; text-shadow: 0 0 15px #818cf8; }
+        0% { text-shadow: 0 0 5px #6366f1; opacity: 0.8; }
+        100% { text-shadow: 0 0 15px #818cf8; opacity: 1; }
       }
 
-      /* GitHub 主题适配：在亮色模式下稍微加深颜色以保证对比度 */
+      /* GitHub 主题适配：亮色模式对比度修复 */
       @media (prefers-color-scheme: light) {
         .text-jp { fill: #333; text-shadow: 0 0 5px #d946ef; }
-        .text-cn { fill: #4f46e5; }
+        .text-cn { fill: #4f46e5; text-shadow: 0 0 5px #d946ef;}
         .text-en { fill: #0891b2; font-weight: bold; }
-        .magic-circle-inner, .magic-circle-outer { opacity: 0.3; stroke: #8b5cf6; }
       }
     </style>
   </defs>
 
-  <g transform="translate(400, 125)">
-    <g class="magic-circle-inner" stroke="#d946ef" fill="none" stroke-width="1.5">
-      <circle r="90" />
-      <circle r="80" stroke-dasharray="4 6" />
-      <polygon points="0,-90 77.9,45 -77.9,45" />
-      <polygon points="0,90 77.9,-45 -77.9,-45" />
-    </g>
+  <g transform="translate(400, 125)" stroke="#d946ef" fill="none" stroke-width="1.5" opacity="0.3">
+    <path class="magic-draw" d="M -90,0 A 90,90 0 1,1 90,0 A 90,90 0 1,1 -90,0 M -80,0 A 80,80 0 1,1 80,0 A 80,80 0 1,1 -80,0 M -105,0 A 105,105 0 1,1 105,0 A 105,105 0 1,1 -105,0 M -115,0 A 115,115 0 1,1 115,0 A 115,115 0 1,1 -115,0" />
     
-    <g class="magic-circle-outer" stroke="#06b6d4" fill="none" stroke-width="1.2">
-      <circle r="115" />
-      <circle r="105" stroke-dasharray="15 15" stroke-width="2"/>
-      <rect x="-67" y="-67" width="134" height="134" transform="rotate(45)" />
-      <rect x="-67" y="-67" width="134" height="134" />
-    </g>
+    <path class="magic-draw" d="M 0,-90 L 77.9,45 L -77.9,45 Z M 0,90 L -77.9,-45 L 77.9,-45 Z" />
+    
+    <rect class="magic-draw" x="-67" y="-67" width="134" height="134" transform="rotate(45)" stroke="#06b6d4" stroke-width="1.2" />
+    <rect class="magic-draw" x="-67" y="-67" width="134" height="134" stroke="#06b6d4" stroke-width="1.2" />
   </g>
 
-  <text x="50%" y="110" class="text-jp" text-anchor="middle">爆ぜろリアル！弾けろシナプス！ パニッシュメント ディス、ワールド！</text>
-  
-  <text x="50%" y="155" class="text-cn" text-anchor="middle">爆裂吧现实！粉碎吧精神！放逐这个世界！</text>
-  
-  <text x="50%" y="190" class="text-en" text-anchor="middle">hazero riaru！ hajikero shinapusu！ panisshimento deisu waarudo！</text>
+  <g class="text-container">
+    <text x="50%" y="110" class="text-jp" text-anchor="middle">爆ぜろリアル！弾けろシナプス！ パニッシュメント ディス、ワールド！</text>
+    
+    <text x="50%" y="155" class="text-cn" text-anchor="middle">爆裂吧现实！粉碎吧精神！放逐这个世界！</text>
+    
+    <text x="50%" y="190" class="text-en" text-anchor="middle">hazero riaru！ hajikero shinapusu！ panisshimento deisu waarudo！</text>
+  </g>
 
 </svg>
