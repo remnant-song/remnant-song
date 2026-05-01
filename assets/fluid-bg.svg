@@ -55,102 +55,59 @@
       }
     </style>
 
-    <linearGradient id="grad-spline1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF3366" />
-      <stop offset="100%" stop-color="#9933FF" />
-    </linearGradient>
-    <linearGradient id="grad-spline2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00E5FF" />
-      <stop offset="100%" stop-color="#00FF7F" />
-    </linearGradient>
-    <linearGradient id="grad-spline3" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FFB100" />
-      <stop offset="100%" stop-color="#FF0055" />
-    </linearGradient>
-    <linearGradient id="grad-shape1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7B2CBF" />
-      <stop offset="100%" stop-color="#390099" />
-    </linearGradient>
-    <linearGradient id="grad-shape2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF9E00" />
-      <stop offset="100%" stop-color="#FF5400" />
-    </linearGradient>
+    <filter id="radialBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+    </filter>
 
-    <g id="wire-cube" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <polygon points="-25,-25 25,-25 25,25 -25,25" />
-      <polygon points="-12,-37 38,-37 38,13 -12,13" />
-      <line x1="-25" y1="-25" x2="-12" y2="-37" />
-      <line x1="25" y1="-25" x2="38" y2="-37" />
-      <line x1="25" y1="25" x2="38" y2="13" />
-      <line x1="-25" y1="25" x2="-12" y2="13" />
-    </g>
+    <radialGradient id="blurMaskGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#fff" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="maskForBlurLayer">
+      <rect width="100%" height="100%" fill="url(#blurMaskGradient)"/>
+    </mask>
 
-    <g id="wire-tetra" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <polygon points="0,-35 -30,18 30,18" />
-      <line x1="0" y1="-35" x2="0" y2="5" />
-      <line x1="-30" y1="18" x2="0" y2="5" />
-      <line x1="30" y1="18" x2="0" y2="5" />
-    </g>
+    <radialGradient id="clearMaskGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#fff" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#fff" stop-opacity="1"/>
+    </radialGradient>
+    <mask id="maskForClearLayer">
+      <rect width="100%" height="100%" fill="url(#clearMaskGradient)"/>
+    </mask>
+
+    <linearGradient id="grad-spline1" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" stop-color="#FF3366" /> <stop offset="100%" stop-color="#9933FF" /> </linearGradient>
+    <linearGradient id="grad-spline2" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" stop-color="#00E5FF" /> <stop offset="100%" stop-color="#00FF7F" /> </linearGradient>
+    <linearGradient id="grad-spline3" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" stop-color="#FFB100" /> <stop offset="100%" stop-color="#FF0055" /> </linearGradient>
+    <linearGradient id="grad-shape1" x1="0%" y1="0%" x2="100%" y2="100%"> <stop offset="0%" stop-color="#7B2CBF" /> <stop offset="100%" stop-color="#390099" /> </linearGradient>
+    <linearGradient id="grad-shape2" x1="0%" y1="0%" x2="100%" y2="100%"> <stop offset="0%" stop-color="#FF9E00" /> <stop offset="100%" stop-color="#FF5400" /> </linearGradient>
+
+    <g id="wire-cube" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"> <polygon points="-25,-25 25,-25 25,25 -25,25" /> <polygon points="-12,-37 38,-37 38,13 -12,13" /> <line x1="-25" y1="-25" x2="-12" y2="-37" /> <line x1="25" y1="-25" x2="38" y2="-37" /> <line x1="25" y1="25" x2="38" y2="13" /> <line x1="-25" y1="25" x2="-12" y2="13" /> </g>
+    <g id="wire-tetra" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"> <polygon points="0,-35 -30,18 30,18" /> <line x1="0" y1="-35" x2="0" y2="5" /> <line x1="-30" y1="18" x2="0" y2="5" /> <line x1="30" y1="18" x2="0" y2="5" /> </g>
 
     <path id="spline1" d="M -100 300 Q 200 150, 500 350 T 1300 200" fill="none" stroke="url(#grad-spline1)" stroke-width="2"/>
     <path id="spline2" d="M -100 450 Q 300 600, 700 350 T 1300 450" fill="none" stroke="url(#grad-spline2)" stroke-width="2"/>
     <path id="spline3" d="M -100 150 Q 400 -50, 800 250 T 1300 100" fill="none" stroke="url(#grad-spline3)" stroke-width="2"/>
+
+    <g id="all-graphics">
+      <g style="animation: floatSpline1 15s infinite ease-in-out;"> <use href="#spline1" style="opacity: 0.1; animation: floatSpline1 15s infinite ease-in-out; animation-delay: -0.6s;" /> <use href="#spline1" style="opacity: 0.3; animation: floatSpline1 15s infinite ease-in-out; animation-delay: -0.3s;" /> <use href="#spline1" style="opacity: 0.85;" /> </g>
+      <g style="animation: floatSpline2 18s infinite ease-in-out;"> <use href="#spline2" style="opacity: 0.1; animation: floatSpline2 18s infinite ease-in-out; animation-delay: -0.8s;" /> <use href="#spline2" style="opacity: 0.3; animation: floatSpline2 18s infinite ease-in-out; animation-delay: -0.4s;" /> <use href="#spline2" style="opacity: 0.85;" /> </g>
+      <g style="animation: floatSpline3 12s infinite ease-in-out;"> <use href="#spline3" style="opacity: 0.1; animation: floatSpline3 12s infinite ease-in-out; animation-delay: -0.5s;" /> <use href="#spline3" style="opacity: 0.3; animation: floatSpline3 12s infinite ease-in-out; animation-delay: -0.25s;" /> <use href="#spline3" style="opacity: 0.85;" /> </g>
+
+      <g transform="translate(200, 150)"> <use href="#wire-cube" stroke="url(#grad-spline1)" style="opacity: 0.15; animation: spinFloat1 20s infinite linear; animation-delay: -0.8s;" /> <use href="#wire-cube" stroke="url(#grad-spline1)" style="opacity: 0.4;  animation: spinFloat1 20s infinite linear; animation-delay: -0.4s;" /> <use href="#wire-cube" stroke="url(#grad-spline1)" style="opacity: 0.9;  animation: spinFloat1 20s infinite linear; animation-delay: 0s;" /> </g>
+      <g transform="translate(950, 450) scale(1.2)"> <use href="#wire-tetra" stroke="url(#grad-spline2)" style="opacity: 0.15; animation: spinFloat2 15s infinite linear; animation-delay: -0.6s;" /> <use href="#wire-tetra" stroke="url(#grad-spline2)" style="opacity: 0.4;  animation: spinFloat2 15s infinite linear; animation-delay: -0.3s;" /> <use href="#wire-tetra" stroke="url(#grad-spline2)" style="opacity: 0.9;  animation: spinFloat2 15s infinite linear; animation-delay: 0s;" /> </g>
+      <g transform="translate(600, 300) scale(1.5)"> <use href="#wire-cube" stroke="url(#grad-spline3)" style="opacity: 0.15; animation: spinFloat3 25s infinite linear; animation-delay: -1s;" /> <use href="#wire-cube" stroke="url(#grad-spline3)" style="opacity: 0.4;  animation: spinFloat3 25s infinite linear; animation-delay: -0.5s;" /> <use href="#wire-cube" stroke="url(#grad-spline3)" style="opacity: 0.9;  animation: spinFloat3 25s infinite linear; animation-delay: 0s;" /> </g>
+      <g transform="translate(150, 450) scale(0.8)"> <use href="#wire-tetra" stroke="url(#grad-shape1)" style="opacity: 0.15; animation: spinFloat2 18s infinite linear; animation-delay: -0.7s;" /> <use href="#wire-tetra" stroke="url(#grad-shape1)" style="opacity: 0.4;  animation: spinFloat2 18s infinite linear; animation-delay: -0.35s;" /> <use href="#wire-tetra" stroke="url(#grad-shape1)" style="opacity: 0.9;  animation: spinFloat2 18s infinite linear; animation-delay: 0s;" /> </g>
+      <g transform="translate(1000, 150) scale(0.9)"> <use href="#wire-cube" stroke="url(#grad-shape2)" style="opacity: 0.15; animation: spinFloat1 22s infinite linear; animation-delay: -0.9s;" /> <use href="#wire-cube" stroke="url(#grad-shape2)" style="opacity: 0.4;  animation: spinFloat1 22s infinite linear; animation-delay: -0.45s;" /> <use href="#wire-cube" stroke="url(#grad-shape2)" style="opacity: 0.9;  animation: spinFloat1 22s infinite linear; animation-delay: 0s;" /> </g>
+      <g transform="translate(450, 100) scale(0.7)"> <use href="#wire-tetra" stroke="url(#grad-spline1)" style="opacity: 0.15; animation: spinFloat3 16s infinite linear; animation-delay: -0.5s;" /> <use href="#wire-tetra" stroke="url(#grad-spline1)" style="opacity: 0.4;  animation: spinFloat3 16s infinite linear; animation-delay: -0.25s;" /> <use href="#wire-tetra" stroke="url(#grad-spline1)" style="opacity: 0.9;  animation: spinFloat3 16s infinite linear; animation-delay: 0s;" /> </g>
+    </g>
   </defs>
 
   <rect class="bg-rect" width="100%" height="100%" />
 
-  <g style="animation: floatSpline1 15s infinite ease-in-out;">
-    <use href="#spline1" style="opacity: 0.1; animation: floatSpline1 15s infinite ease-in-out; animation-delay: -0.6s;" />
-    <use href="#spline1" style="opacity: 0.3; animation: floatSpline1 15s infinite ease-in-out; animation-delay: -0.3s;" />
-    <use href="#spline1" style="opacity: 0.85;" />
-  </g>
+  <use href="#all-graphics" mask="url(#maskForClearLayer)" />
 
-  <g style="animation: floatSpline2 18s infinite ease-in-out;">
-    <use href="#spline2" style="opacity: 0.1; animation: floatSpline2 18s infinite ease-in-out; animation-delay: -0.8s;" />
-    <use href="#spline2" style="opacity: 0.3; animation: floatSpline2 18s infinite ease-in-out; animation-delay: -0.4s;" />
-    <use href="#spline2" style="opacity: 0.85;" />
-  </g>
-
-  <g style="animation: floatSpline3 12s infinite ease-in-out;">
-    <use href="#spline3" style="opacity: 0.1; animation: floatSpline3 12s infinite ease-in-out; animation-delay: -0.5s;" />
-    <use href="#spline3" style="opacity: 0.3; animation: floatSpline3 12s infinite ease-in-out; animation-delay: -0.25s;" />
-    <use href="#spline3" style="opacity: 0.85;" />
-  </g>
-
-  <g transform="translate(200, 150)">
-    <use href="#wire-cube" stroke="url(#grad-spline1)" style="opacity: 0.15; animation: spinFloat1 20s infinite linear; animation-delay: -0.8s;" />
-    <use href="#wire-cube" stroke="url(#grad-spline1)" style="opacity: 0.4;  animation: spinFloat1 20s infinite linear; animation-delay: -0.4s;" />
-    <use href="#wire-cube" stroke="url(#grad-spline1)" style="opacity: 0.9;  animation: spinFloat1 20s infinite linear; animation-delay: 0s;" />
-  </g>
-
-  <g transform="translate(950, 450) scale(1.2)">
-    <use href="#wire-tetra" stroke="url(#grad-spline2)" style="opacity: 0.15; animation: spinFloat2 15s infinite linear; animation-delay: -0.6s;" />
-    <use href="#wire-tetra" stroke="url(#grad-spline2)" style="opacity: 0.4;  animation: spinFloat2 15s infinite linear; animation-delay: -0.3s;" />
-    <use href="#wire-tetra" stroke="url(#grad-spline2)" style="opacity: 0.9;  animation: spinFloat2 15s infinite linear; animation-delay: 0s;" />
-  </g>
-
-  <g transform="translate(600, 300) scale(1.5)">
-    <use href="#wire-cube" stroke="url(#grad-spline3)" style="opacity: 0.15; animation: spinFloat3 25s infinite linear; animation-delay: -1s;" />
-    <use href="#wire-cube" stroke="url(#grad-spline3)" style="opacity: 0.4;  animation: spinFloat3 25s infinite linear; animation-delay: -0.5s;" />
-    <use href="#wire-cube" stroke="url(#grad-spline3)" style="opacity: 0.9;  animation: spinFloat3 25s infinite linear; animation-delay: 0s;" />
-  </g>
-
-  <g transform="translate(150, 450) scale(0.8)">
-    <use href="#wire-tetra" stroke="url(#grad-shape1)" style="opacity: 0.15; animation: spinFloat2 18s infinite linear; animation-delay: -0.7s;" />
-    <use href="#wire-tetra" stroke="url(#grad-shape1)" style="opacity: 0.4;  animation: spinFloat2 18s infinite linear; animation-delay: -0.35s;" />
-    <use href="#wire-tetra" stroke="url(#grad-shape1)" style="opacity: 0.9;  animation: spinFloat2 18s infinite linear; animation-delay: 0s;" />
-  </g>
-
-  <g transform="translate(1000, 150) scale(0.9)">
-    <use href="#wire-cube" stroke="url(#grad-shape2)" style="opacity: 0.15; animation: spinFloat1 22s infinite linear; animation-delay: -0.9s;" />
-    <use href="#wire-cube" stroke="url(#grad-shape2)" style="opacity: 0.4;  animation: spinFloat1 22s infinite linear; animation-delay: -0.45s;" />
-    <use href="#wire-cube" stroke="url(#grad-shape2)" style="opacity: 0.9;  animation: spinFloat1 22s infinite linear; animation-delay: 0s;" />
-  </g>
-  
-  <g transform="translate(450, 100) scale(0.7)">
-    <use href="#wire-tetra" stroke="url(#grad-spline1)" style="opacity: 0.15; animation: spinFloat3 16s infinite linear; animation-delay: -0.5s;" />
-    <use href="#wire-tetra" stroke="url(#grad-spline1)" style="opacity: 0.4;  animation: spinFloat3 16s infinite linear; animation-delay: -0.25s;" />
-    <use href="#wire-tetra" stroke="url(#grad-spline1)" style="opacity: 0.9;  animation: spinFloat3 16s infinite linear; animation-delay: 0s;" />
-  </g>
+  <use href="#all-graphics" mask="url(#maskForBlurLayer)" filter="url(#radialBlur)" />
 
 </svg>
