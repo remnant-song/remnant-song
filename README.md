@@ -13,8 +13,8 @@
 <br>
 
 ![Stats](./profile/stats.svg)
+<br>
 ![Top Languages](./profile/top-langs.svg)
-![Pinned](./profile/pin-readme-tools-github-readme-stats.svg)
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=remnant-song&theme=tokyonight&hide_border=true&background=111827" height="165" alt="GitHub Streak">
