@@ -12,10 +12,9 @@
 
 <br>
 
-<!-- <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=remnant-song&show_icons=true&theme=tokyonight&hide_border=true&bg_color=111827" height="165" alt="GitHub Stats">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=remnant-song&layout=compact&theme=tokyonight&hide_border=true&bg_color=111827" height="165" alt="Top Languages">
-</p> -->
+![Stats](./profile/stats.svg)
+![Top Languages](./profile/top-langs.svg)
+![Pinned](./profile/pin-readme-tools-github-readme-stats.svg)
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=remnant-song&theme=tokyonight&hide_border=true&background=111827" height="165" alt="GitHub Streak">
