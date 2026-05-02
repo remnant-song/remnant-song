@@ -12,14 +12,13 @@
 
 <br>
 
-
 <p align="center">
   <img src="./profile/stats.svg" height="165" alt="GitHub Stats">
   <img src="./profile/top-langs.svg" height="165" alt="Top Languages">
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=remnant-song&theme=tokyonight&hide_border=true&background=111827" height="165" alt="GitHub Streak">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=remnant-song&theme=transparent&hide_border=true" height="165" alt="GitHub Streak">
 </p>
 
 <br>
