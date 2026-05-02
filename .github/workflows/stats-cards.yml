@@ -5,7 +5,7 @@ name: Update README cards
 
 on:
   push:
-    branches: [ main ] 
+    分支: [ main ] 
   workflow_dispatch:
 
 jobs:
@@ -16,21 +16,21 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      # 生成统计数据卡片：强制深色极客主题，隐藏边框
+      # 生成统计数据卡片：透明主题，隐藏边框
       - name: Generate stats card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=111827
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=transparent&hide_border=true
           path: profile/stats.svg
           token: ${{ secrets.GH_PAT }}
 
-      # 生成语言分布卡片：采用紧凑布局，统一色彩
+      # 生成语言分布卡片：透明主题，紧凑布局，隐藏边框
       - name: Generate top languages card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&hide_border=true&bg_color=111827
+          options: username=${{ github.repository_owner }}&layout=compact&theme=transparent&hide_border=true
           path: profile/top-langs.svg
           token: ${{ secrets.GH_PAT }}
 
