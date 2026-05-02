@@ -4,8 +4,8 @@ permissions:
 name: Update README cards
 
 on:
-  schedule: # 每天运行一次
-    - cron: "0 0 * * *"
+  push:
+    branches: [ main ] 
   workflow_dispatch:
 
 jobs:
@@ -14,27 +14,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }} # 核心：用你的私人令牌
+          token: ${{ secrets.GH_PAT }}
 
-      # 生成统计卡片
+      # 生成统计数据卡片：强制深色极客主题，隐藏边框
       - name: Generate stats card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&theme=transparent
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=111827
           path: profile/stats.svg
           token: ${{ secrets.GH_PAT }}
 
-      # 生成语言卡片
+      # 生成语言分布卡片：采用紧凑布局，统一色彩
       - name: Generate top languages card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&theme=transparent
+          options: username=${{ github.repository_owner }}&layout=compact&theme=tokyonight&hide_border=true&bg_color=111827
           path: profile/top-langs.svg
           token: ${{ secrets.GH_PAT }}
 
-      # 提交并推送
       - name: Commit cards
         run: |
           git config user.name "remnant-song"
