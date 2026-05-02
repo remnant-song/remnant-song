@@ -4,8 +4,8 @@ permissions:
 name: Update README cards
 
 on:
-  push:
-    branches: [ main ]
+  schedule: # 每天运行一次
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
