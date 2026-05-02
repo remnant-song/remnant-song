@@ -34,6 +34,14 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.GH_PAT }}
 
+      - name: Generate pin card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=${{ github.repository_owner }}&layout=compact&theme=transparent
+          path: profile/pin-readme-tools-github-readme-stats.svg
+          token: ${{ secrets.GH_PAT }}
+
       # 提交并推送
       - name: Commit cards
         run: |
