@@ -1,25 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
   <defs>
     <filter id="blur-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3.5" />
+      <feGaussianBlur stdDeviation="4.5" />
     </filter>
 
     <style>
       /* ====================================== */
-      /* 🔥 1. 魔法阵：原生 CSS 高速生长动画 */
+      /* 🔥 1. 魔法阵原生 CSS 动画与旋转控制 */
       /* ====================================== */
       .magic-draw {
         stroke-linecap: round;
         stroke-linejoin: round;
-        /* 将长度设大，初始完全偏移隐藏 */
         stroke-dasharray: 4000;
         stroke-dashoffset: 4000;
-        /* 2.5秒内疾速绘制完成，并永远停在完成状态 */
-        animation: drawMagic 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: drawMagic 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
       @keyframes drawMagic {
         100% { stroke-dashoffset: 0; }
       }
+
+      .tech-fade {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0;
+        animation: hudReveal 0.8s 1.8s forwards;
+      }
+      @keyframes hudReveal {
+        0%   { opacity: 0; }
+        20%  { opacity: 1; }
+        40%  { opacity: 0; }
+        60%  { opacity: 1; }
+        80%  { opacity: 0.3; }
+        100% { opacity: 1; }
+      }
+
+      .spin-layer-1 { transform-origin: 0 0; animation: spinCw 30s linear infinite; }
+      .spin-layer-2 { transform-origin: 0 0; animation: spinCcw 24s linear infinite; }
+      .spin-layer-3 { transform-origin: 0 0; animation: spinCw 15s linear infinite; }
+
+      @keyframes spinCw { 100% { transform: rotate(360deg); } }
+      @keyframes spinCcw { 100% { transform: rotate(-360deg); } }
 
       /* ====================================== */
       /* 🔥 2. 台词精准时序控制 */
@@ -28,99 +48,114 @@
         font-family: "Segoe UI", "Helvetica Neue", sans-serif;
         font-size: 22px;
         font-weight: 900;
-        fill: #fff;
-        opacity: 0; /* 核心：初始完全隐形！ */
-        /* 延迟 2.5 秒（魔法阵画完的瞬间），瞬间出现并以2秒为周期无限故障撕裂 */
-        animation: glitch-anim 2s 1.5s infinite;
+        fill: #ffffff;
+        opacity: 0;
+        animation: glitch-anim 2s 1.8s infinite;
       }
       
       .text-cn {
         font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
         font-size: 16px;
         font-weight: bold;
-        fill: #6366f1; /* 颜色加深，更易读 */
+        fill: #4f46e5; /* 颜色加深 */
         opacity: 0;
-        /* 2.5秒后淡入，3.0秒后开始平缓呼吸 */
-        animation: fadeIn 0.5s 1.5s forwards, pulse 3s 3.0s infinite alternate;
+        /* 取消阴影，仅保留透明度呼吸效果 */
+        animation: fadeIn 0.5s 2s forwards, pulse-no-shadow 3s 3.5s infinite alternate;
       }
       
       .text-en {
         font-family: "Courier New", monospace;
         font-size: 12px;
-        fill: #67e8f9;
-        letter-spacing: 3px;
+        fill: #0891b2; /* 颜色深一点点 */
+        letter-spacing: 4px;
         opacity: 0;
-        animation: fadeIn 0.5s 1.5s forwards;
+        animation: hudReveal 0.5s 2.2s forwards;
       }
 
       @keyframes fadeIn {
         to { opacity: 1; }
       }
 
-      /* 💡 加速版 2 秒周期故障特效 (白字和光晕同生同死) */
       @keyframes glitch-anim {
-        0%, 80%, 90%, 100% { opacity: 1; text-shadow: 0 0 10px #d946ef, 0 0 20px #d946ef; transform: translate(0); }
-        82% { opacity: 1; text-shadow: 3px 0 0 #0ff, -3px 0 0 #f0f; transform: translate(-3px, 1px) skewX(-10deg); }
-        84% { opacity: 1; text-shadow: -4px 0 0 #0ff, 4px 0 0 #f0f; transform: translate(3px, -2px) skewX(10deg); }
-        86% { opacity: 1; text-shadow: 2px 0 0 #0ff, -2px 0 0 #f0f; transform: translate(0px, 2px); }
-        88% { opacity: 1; text-shadow: -2px 0 0 #0ff, 2px 0 0 #f0f; transform: translate(-1px, -1px); }
+        0%, 80%, 90%, 100% { 
+          opacity: 1; 
+          text-shadow: 0 0 10px #d946ef, 0 0 20px #d946ef, 0 2px 4px rgba(0,0,0,0.9); 
+          transform: translate(0); 
+        }
+        82% { opacity: 1; text-shadow: 3px 0 0 #0ff, -3px 0 0 #f0f, 0 2px 4px rgba(0,0,0,0.9); transform: translate(-3px, 1px) skewX(-10deg); }
+        84% { opacity: 1; text-shadow: -4px 0 0 #0ff, 4px 0 0 #f0f, 0 2px 4px rgba(0,0,0,0.9); transform: translate(3px, -2px) skewX(10deg); }
+        86% { opacity: 1; text-shadow: 2px 0 0 #0ff, -2px 0 0 #f0f, 0 2px 4px rgba(0,0,0,0.9); transform: translate(0px, 2px); }
+        88% { opacity: 1; text-shadow: -2px 0 0 #0ff, 2px 0 0 #f0f, 0 2px 4px rgba(0,0,0,0.9); transform: translate(-1px, -1px); }
       }
 
-      /* 呼吸灯发光特效 */
-      @keyframes pulse {
-        0% { text-shadow: 0 0 5px #4f46e5; opacity: 0.8; }
-        100% { text-shadow: 0 0 15px #818cf8; opacity: 1; }
+      /* 针对中文台词的无阴影呼吸 */
+      @keyframes pulse-no-shadow {
+        0% { opacity: 0.7; }
+        100% { opacity: 1; }
       }
 
-      /* GitHub 主题适配：亮色模式下为了保证能看清，将高光层颜色反转为深色 */
       @media (prefers-color-scheme: light) {
         .text-jp { fill: #111; text-shadow: 0 0 5px #d946ef; }
-        .text-cn { fill: #3730a3; text-shadow: 0 0 5px #d946ef; }
-        .text-en { fill: #0891b2; font-weight: bold; }
-        .glow-base { opacity: 0.1 !important; filter: none !important; }
-        .glow-mid { opacity: 0.4 !important; }
-        .glow-core { stroke: #111827 !important; opacity: 0.7 !important; }
+        .text-cn { fill: #3730a3; }
+        .text-en { fill: #075985; font-weight: bold; }
+        .glow-base { opacity: 0.15 !important; filter: none !important; }
+        .glow-mid { opacity: 0.5 !important; }
+        .glow-core { stroke: #111827 !important; opacity: 0.8 !important; }
       }
     </style>
 
-    <g id="magic-magenta" fill="none">
-      <path class="magic-draw" d="M 0,-120 A 120,120 0 1,1 0,120 A 120,120 0 1,1 0,-120" />
-      <path class="magic-draw" d="M 0,-110 A 110,110 0 1,1 0,110 A 110,110 0 1,1 0,-110" />
-      <path class="magic-draw" d="M 0,-100 L 86.6,50 L -86.6,50 Z M 0,100 L -86.6,-50 L 86.6,-50 Z" />
-      <path class="magic-draw" d="M 0,60 L -51.96,-30 L 51.96,-30 Z M 0,-60 L 51.96,30 L -51.96,30 Z" />
-      <path class="magic-draw" d="M 0,-25 A 25,25 0 1,1 0,25 A 25,25 0 1,1 0,-25" />
+    <g id="fuchsia-solid" fill="none">
+      <path class="magic-draw" d="M 0,-100 A 100,100 0 1,1 0,100 A 100,100 0 1,1 0,-100" />
+      <path class="magic-draw" d="M 0,-100 L 86.6,-50 L 86.6,50 L 0,100 L -86.6,50 L -86.6,-50 Z" />
+      <path class="magic-draw" d="M 0,-45 A 45,45 0 1,1 0,45 A 45,45 0 1,1 0,-45" />
+    </g>
+    <g id="fuchsia-tech" fill="none">
+      <path class="tech-fade" d="M 0,-90 A 90,90 0 1,1 0,90 A 90,90 0 1,1 0,-90" stroke-dasharray="3 9" />
+      <path class="tech-fade" d="M -115,0 L -105,0 M 115,0 L 105,0 M 0,-115 L 0,-105 M 0,115 L 0,105" stroke-width="3" />
     </g>
 
-    <g id="magic-cyan" fill="none">
-      <path class="magic-draw" d="M -56.56,-56.56 L 56.56,-56.56 L 56.56,56.56 L -56.56,56.56 Z" />
-      <path class="magic-draw" d="M 0,-80 L 80,0 L 0,80 L -80,0 Z" />
-      <path class="magic-draw" d="M 0,-90 A 90,90 0 1,1 0,90 A 90,90 0 1,1 0,-90" />
-      <path class="magic-draw" d="M 0,-110 L 0,110 M -110,0 L 110,0 M -77.78,-77.78 L 77.78,77.78 M -77.78,77.78 L 77.78,-77.78" />
-      <path class="magic-draw" d="M 0,-15 L 15,0 L 0,15 L -15,0 Z" />
+    <g id="cyan-solid" fill="none">
+      <path class="magic-draw" d="M 0,-100 L 86.6,50 L -86.6,50 Z" />
+      <path class="magic-draw" d="M 0,100 L -86.6,-50 L 86.6,-50 Z" />
+      <path class="magic-draw" d="M -42.4,-42.4 L 42.4,-42.4 L 42.4,42.4 L -42.4,42.4 Z" />
     </g>
+    <g id="cyan-tech" fill="none">
+      <path class="tech-fade" d="M 0,-115 A 115,115 0 1,1 0,115 A 115,115 0 1,1 0,-115" stroke-dasharray="10 15 2 15" stroke-width="2" />
+      <path class="tech-fade" d="M 0,-70 A 70,70 0 1,1 0,70 A 70,70 0 1,1 0,-70" stroke-dasharray="4 20" stroke-width="3" />
+      <path class="tech-fade" d="M -15,-15 L -25,-25 M 15,15 L 25,25 M -15,15 L -25,25 M 15,-15 L 25,-25" />
+    </g>
+
+    <g id="gold-solid" fill="none">
+      <path class="magic-draw" d="M 0,-25 L 8,-8 L 25,0 L 8,8 L 0,25 L -8,8 L -25,0 L -8,-8 Z" />
+    </g>
+    <g id="gold-tech" fill="none">
+      <path class="tech-fade" d="M 0,-12 A 12,12 0 1,1 0,12 A 12,12 0 1,1 0,-12" stroke-dasharray="2 4" />
+      </g>
   </defs>
 
-  <g transform="translate(400, 125)">
-    <g class="glow-base" filter="url(#blur-glow)">
-      <use href="#magic-magenta" stroke="#d946ef" stroke-width="6" opacity="0.35" />
-      <use href="#magic-cyan" stroke="#06b6d4" stroke-width="6" opacity="0.35" />
+  <g transform="translate(400, 120)">
+    <g class="glow-base" filter="url(#blur-glow)" opacity="0.4" stroke-width="8">
+      <g class="spin-layer-1"><use href="#fuchsia-solid" stroke="#d946ef"/><use href="#fuchsia-tech" stroke="#d946ef" color="#d946ef"/></g>
+      <g class="spin-layer-2"><use href="#cyan-solid" stroke="#06b6d4"/><use href="#cyan-tech" stroke="#06b6d4" color="#06b6d4"/></g>
+      <g class="spin-layer-3"><use href="#gold-solid" stroke="#f59e0b"/><use href="#gold-tech" stroke="#f59e0b" color="#f59e0b"/></g>
     </g>
 
-    <g class="glow-mid">
-      <use href="#magic-magenta" stroke="#d946ef" stroke-width="2" opacity="0.8" />
-      <use href="#magic-cyan" stroke="#06b6d4" stroke-width="2" opacity="0.8" />
+    <g class="glow-mid" opacity="0.8" stroke-width="2.5">
+      <g class="spin-layer-1"><use href="#fuchsia-solid" stroke="#f0abfc"/><use href="#fuchsia-tech" stroke="#f0abfc" color="#f0abfc"/></g>
+      <g class="spin-layer-2"><use href="#cyan-solid" stroke="#67e8f9"/><use href="#cyan-tech" stroke="#67e8f9" color="#67e8f9"/></g>
+      <g class="spin-layer-3"><use href="#gold-solid" stroke="#fde047"/><use href="#gold-tech" stroke="#fde047" color="#fde047"/></g>
     </g>
 
-    <g class="glow-core">
-      <use href="#magic-magenta" stroke="#ffffff" stroke-width="0.8" opacity="1" />
-      <use href="#magic-cyan" stroke="#ffffff" stroke-width="0.8" opacity="1" />
+    <g class="glow-core" opacity="1" stroke-width="1">
+      <g class="spin-layer-1"><use href="#fuchsia-solid" stroke="#ffffff"/><use href="#fuchsia-tech" stroke="#ffffff" color="#ffffff"/></g>
+      <g class="spin-layer-2"><use href="#cyan-solid" stroke="#ffffff"/><use href="#cyan-tech" stroke="#ffffff" color="#ffffff"/></g>
+      <g class="spin-layer-3"><use href="#gold-solid" stroke="#ffffff"/><use href="#gold-tech" stroke="#ffffff" color="#ffffff"/></g>
     </g>
   </g>
 
   <g>
-    <text x="50%" y="110" class="text-jp" text-anchor="middle">爆ぜろリアル！弾けろシナプス！ パニッシュメント ディス、ワールド！</text>
-    <text x="50%" y="155" class="text-cn" text-anchor="middle">爆裂吧现实！粉碎吧精神！放逐这个世界！</text>
-    <text x="50%" y="190" class="text-en" text-anchor="middle">hazero riaru！ hajikero shinapusu！ panisshimento deisu waarudo！</text>
+    <text x="50%" y="125" class="text-jp" text-anchor="middle">爆ぜろリアル！弾けろシナプス！ パニッシュメント ディス、ワールド！</text>
+    <text x="50%" y="165" class="text-cn" text-anchor="middle">爆裂吧现实！粉碎吧精神！放逐这个世界！</text>
+    <text x="50%" y="200" class="text-en" text-anchor="middle">HAZERO RIARU! HAJIKERO SHINAPUSU! PANISSHIMENTO DISU WAARUDO!</text>
   </g>
-
 </svg>
