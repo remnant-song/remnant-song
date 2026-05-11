@@ -2,12 +2,19 @@
   <img src="https://github.com/remnant-song/remnant-song/raw/main/assets/fluid-bg.svg" alt="3D Fluid Background" width="100%" style="max-width:1200px;">
 </p>
 
-<h3 align="center"> 「 兴趣使然的观测者 / A Wanderer for Fun 」 </h3>
-
 <p align="center">
-  曾经在学院里修习过软件工程的法则，但最终选择在现实的主线中踏上另一条分歧<br>
-  敲击键盘仅仅是作为“兴趣使然”的业余消遣<br>
-  技术或许算不上绝对硬核与专业，喜欢有趣的东西
+   Once, within the sacred halls of the academy,
+  </br>
+  I walked the path of the Engineering Sages—mastering the forbidden laws of Software.
+  </br>
+   But fate had other plans. I chose to reject that destiny and walk a different rift in reality.
+  </br>
+   Coding? Merely a fleeting pastime for this wandering eye.
+  </br>
+   My techniques are far from absolute—nor do I seek the perfection of the true professionals.
+  </br>
+  Yet I simply enjoy wielding them to conjure the little oddities that amuse me.
+  </br>
 </p>
 
 <br>
