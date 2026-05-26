@@ -3,18 +3,20 @@
 </p>
 
 <p align="center">
-   Once, within the sacred halls of the academy,
-  </br>
-  I walked the path of the Engineering Sages—mastering the forbidden laws of Software.
-  </br>
-   But fate had other plans. I chose to reject that destiny and walk a different rift in reality.
-  </br>
-   Coding? Merely a fleeting pastime for this wandering eye.
-  </br>
-   My techniques are far from absolute—nor do I seek the perfection of the true professionals.
-  </br>
-  Yet I simply enjoy wielding them to conjure the little oddities that amuse me.
-  </br>
+  <em>
+     Once, within the sacred halls of the academy,
+    </br>
+    <em>I walked the path of the Engineering Sages—mastering the forbidden laws of Software.
+    </br>
+     But fate had other plans. I chose to reject that destiny and walk a different rift in reality.
+    </br>
+     Coding? Merely a fleeting pastime for this wandering eye.
+    </br>
+     My techniques are far from absolute—nor do I seek the perfection of the true professionals.
+    </br>
+    Yet I simply enjoy wielding them to conjure the little oddities that amuse me.
+    </br>
+  <em/>
 </p>
 
 <br>
