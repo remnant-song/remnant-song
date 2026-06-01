@@ -7,7 +7,12 @@ on:
   schedule: # 每天运行一次
     - cron: "0 0 * * *"
   workflow_dispatch:
-
+  # 本文件修改时触发
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/stats-cards.yml
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,7 +35,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&theme=transparent&hide_border=true
+          options: username=${{ github.repository_owner }}&layout=compact&theme=transparent&hide_border=true&langs_count=10
           path: profile/top-langs.svg
           token: ${{ secrets.GH_PAT }}
 
