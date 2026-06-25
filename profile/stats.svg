@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">remnant_song's GitHub Stats, Rank: B</title>
-        <desc id="descId">Total Stars Earned: 29, Total Commits  (last year) : 1175, Total PRs: 40, Total Issues: 3, Contributed to (last year): 3</desc>
+        <desc id="descId">Total Stars Earned: 29, Total Commits  (last year) : 1200, Total PRs: 43, Total Issues: 3, Contributed to (last year): 3</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 147.04869588942185;
+        stroke-dashoffset: 145.47072128882826;
       }
     }
   
@@ -192,7 +192,7 @@
         x="219.01"
         y="12.5"
         data-testid="prs"
-      >40</text>
+      >43</text>
     </g>
   </g><g transform="translate(0, 75)">
     <g class="stagger" style="animation-delay: 900ms" transform="translate(25, 0)">
